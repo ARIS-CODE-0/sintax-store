@@ -14,6 +14,7 @@
         .cart-drawer.open { transform: translateX(0); }
         .btn-primary { background-color: #1a1a1a; color: white; transition: all 0.3s ease; }
         .btn-primary:hover { background-color: #333; transform: translateY(-2px); }
+        .img-fallback { background-color: #e2e8f0; }
     </style>
 </head>
 <body class="antialiased">
@@ -50,7 +51,7 @@
             </div>
             <div class="relative">
                 <div class="aspect-square bg-slate-100 rounded-3xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc535ye?auto=format&fit=crop&q=80&w=1000" alt="Hero Product" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1587829671777-762432929430?auto=format&fit=crop&q=80&w=1000" alt="Hero Product" class="w-full h-full object-cover">
                 </div>
                 <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
                     <p class="text-xs font-bold text-slate-400 uppercase mb-1">Nouveauté</p>
@@ -74,7 +75,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Product 1 -->
                 <div class="product-card group cursor-pointer" onclick="addToCart('Sintax Keyboard V2', 249.00, 'https://images.unsplash.com/photo-1511467687858-23d96c376663?auto=format&fit=crop&q=80&w=400')">
-                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom">
+                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom img-fallback">
                         <img src="https://images.unsplash.com/photo-1511467687858-23d96c376663?auto=format&fit=crop&q=80&w=400" alt="Keyboard" class="product-image w-full h-full object-cover transition-custom">
                     </div>
                     <div class="flex justify-between items-start">
@@ -88,7 +89,7 @@
 
                 <!-- Product 2 -->
                 <div class="product-card group cursor-pointer" onclick="addToCart('Sintax Mouse Air', 89.00, 'https://images.unsplash.com/photo-1527864550417-7fd91fc535ye?auto=format&fit=crop&q=80&w=400')">
-                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom">
+                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom img-fallback">
                         <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc535ye?auto=format&fit=crop&q=80&w=400" alt="Mouse" class="product-image w-full h-full object-cover transition-custom">
                     </div>
                     <div class="flex justify-between items-start">
@@ -102,7 +103,7 @@
 
                 <!-- Product 3 -->
                 <div class="product-card group cursor-pointer" onclick="addToCart('Sintax Desk Mat', 45.00, 'https://images.unsplash.com/photo-1616627561839-65574f9f6c60?auto=format&fit=crop&q=80&w=400')">
-                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom">
+                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom img-fallback">
                         <img src="https://images.unsplash.com/photo-1616627561839-65574f9f6c60?auto=format&fit=crop&q=80&w=400" alt="Mat" class="product-image w-full h-full object-cover transition-custom">
                     </div>
                     <div class="flex justify-between items-start">
@@ -125,6 +126,9 @@
             <button onclick="toggleCart()" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </svg>
             </button>
         </div>
@@ -217,7 +221,6 @@
             cart.push(item);
             updateCart();
             
-            // Simple animation to let the user know it's added
             const btn = document.querySelector('.btn-primary');
             if(btn) {
                 btn.innerText = "Ajouté !";
@@ -274,7 +277,6 @@
             btn.innerText = "Traitement...";
             btn.disabled = true;
             
-            // SIMULATION de paiement
             setTimeout(() => {
                 document.getElementById('payment-form').classList.add('hidden');
                 document.getElementById('payment-success').classList.remove('hidden');
@@ -282,7 +284,6 @@
                 updateCart();
             }, 2000);
         };
-    };
     </script>
 </body>
 </html>
