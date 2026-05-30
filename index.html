@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINTAX | Minimalist Tech Gear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; color: #1a1a1a; }
+        .product-card:hover .product-image { transform: scale(1.05); }
+        .transition-custom { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .cart-drawer { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .cart-drawer.open { transform: translateX(0); }
+        .btn-primary { background-color: #1a1a1a; color: white; transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: #333; transform: translateY(-2px); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold tracking-tighter">SINTAX<span class="text-blue-600">.</span></a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#" class="hover:text-blue-600 transition-colors">Collections</a>
+                <a href="#" class="hover:text-blue-600 transition-colors">À propos</a>
+                <a href="#" class="hover:text-blue-600 transition-colors">Support</a>
+                <div class="relative cursor-pointer" onclick="toggleCart()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 11h14l1 12H4l1-12z" />
+                    </svg>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight mb-6">
+                    L'Essentiel <br><span class="text-blue-600">Redéfini.</span>
+                </h1>
+                <p class="text-slate-500 text-lg mb-10 max-w-lg">
+                    SINTAX crée des outils de productivité minimalistes pour les créatifs et les ingénieurs. Design pur, performance brute.
+                </p>
+                <a href="#products" class="btn-primary px-8 py-4 rounded-full font-bold text-lg inline-block">Découvrir la gamme</a>
+            </div>
+            <div class="relative">
+                <div class="aspect-square bg-slate-100 rounded-3xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc535ye?auto=format&fit=crop&q=80&w=1000" alt="Hero Product" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
+                    <p class="text-xs font-bold text-slate-400 uppercase mb-1">Nouveauté</p>
+                    <p class="text-lg font-bold">Sintax Keyboard V2</p>
+                    <p class="text-blue-600 font-bold">249.00€</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="py-20 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-extrabold tracking-tighter mb-2">Nos Produits</h2>
+                    <p class="text-slate-500">Sélectionnés pour leur excellence et leur minimalisme.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Product 1 -->
+                <div class="product-card group cursor-pointer" onclick="addToCart('Sintax Keyboard V2', 249.00, 'https://images.unsplash.com/photo-1511467687858-23d96c376663?auto=format&fit=crop&q=80&w=400')">
+                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom">
+                        <img src="https://images.unsplash.com/photo-1511467687858-23d96c376663?auto=format&fit=crop&q=80&w=400" alt="Keyboard" class="product-image w-full h-full object-cover transition-custom">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Sintax Keyboard V2</h3>
+                            <p class="text-slate-500 text-sm">Clavier mécanique minimaliste</p>
+                        </div>
+                        <span class="text-lg font-bold">249€</span>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card group cursor-pointer" onclick="addToCart('Sintax Mouse Air', 89.00, 'https://images.unsplash.com/photo-1527864550417-7fd91fc535ye?auto=format&fit=crop&q=80&w=400')">
+                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom">
+                        <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc535ye?auto=format&fit=crop&q=80&w=400" alt="Mouse" class="product-image w-full h-full object-cover transition-custom">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Sintax Mouse Air</h3>
+                            <p class="text-slate-500 text-sm">Souris ergonomique ultra-légère</p>
+                        </div>
+                        <span class="text-lg font-bold">89€</span>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card group cursor-pointer" onclick="addToCart('Sintax Desk Mat', 45.00, 'https://images.unsplash.com/photo-1616627561839-65574f9f6c60?auto=format&fit=crop&q=80&w=400')">
+                    <div class="aspect-square bg-white rounded-3xl overflow-hidden mb-6 border border-slate-200 transition-custom">
+                        <img src="https://images.unsplash.com/photo-16166275618L- la photo a été coupée ici pour gagner de la place dans l'exemple mais imagine l'URL complète" alt="Mat" class="product-image w-full h-full object-cover transition-custom">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Sintax Desk Mat</h3>
+                            <p class="text-slate-500 text-sm">Tapis de bureau en cuir vegan</p>
+                        </div>
+                        <span class="text-lg font-bold">45€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60] hidden" onclick="toggleCart()"></div>
+    <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-white z-[70] shadow-2xl p-8 flex flex-col">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-2xl font-extrabold tracking-tighter">Votre Panier</h2>
+            <button onclick="toggleCart()" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto space-y-6 mb-8">
+            <!-- Items will be injected here -->
+            <p class="text-slate-400 text-center py-10">Votre panier est vide</p>
+        </div>
+        <div class="border-t border-slate-100 pt-6">
+            <div class="flex justify-between text-xl font-bold mb-6">
+                <span>Total</span>
+                <span id="cart-total">0.00€</span>
+            </div>
+            <button onclick="showCheckout()" class="btn-primary w-full py-4 rounded-2xl font-bold text-lg">Passer au paiement</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 z-[80] flex items-center justify-center p-6 hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeCheckout()"></div>
+        <div class="relative bg-white w-full max-w-lg rounded-3xl shadow-2xl p-8 overflow-hidden">
+            <h2 class="text-3xl font-extrabold tracking-tighter mb-6">Paiement Sécurisé</h2>
+            <form id="payment-form" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-bold text-slate-400 uppercase">Prénom</label>
+                        <input type="text" required class="p-3 rounded-xl border border-slate-200 focus:border-blue-600 outline-none transition-colors" placeholder="Jean">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-bold text-slate-400 uppercase">Nom</label>
+                        <input type="text" required class="p-3 rounded-xl border border-slate-200 focus:border-blue-600 outline-none transition-colors" placeholder="Dupont">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-bold text-slate-400 uppercase">Email</label>
+                    <input type="email" required class="p-3 rounded-xl border border-slate-200 focus:border-blue-600 outline-none transition-colors" placeholder="jean@example.com">
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-bold text-slate-400 uppercase">Numéro de carte</label>
+                    <div class="relative">
+                        <input type="text" required id="card-number" class="w-full p-3 rounded-xl border border-slate-200 focus:border-blue-600 outline-none transition-colors" placeholder="0000 0000 0000 0000">
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1">
+                            <div class="w-6 h-4 bg-slate-200 rounded"></div>
+                            <div class="w-6 h-4 bg-slate-300 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-bold text-slate-400 uppercase">Expiration</label>
+                        <input type="text" required class="p-3 rounded-xl border border-slate-200 focus:border-blue-600 outline-none transition-colors" placeholder="MM/YY">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-bold text-slate-400 uppercase">CVC</label>
+                        <input type="text" required class="p-3 rounded-xl border border-slate-200 focus:border-blue-600 outline-none transition-colors" placeholder="123">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary w-full py-4 rounded-2xl font-bold text-lg mt-6">Confirmer le paiement</button>
+            </form>
+            
+            <!-- Success State -->
+            <div id="payment-success" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center text-center p-8">
+                <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Paiement Réussi !</h3>
+                <p class="text-slate-500 mb-8">Votre commande SINTAX a été validée. Vous allez recevoir un email de confirmation.</p>
+                <button onclick="closeCheckout()" class="px-8 py-3 bg-slate-900 text-white rounded-full font-bold">Retour à la boutique</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        const cartCount = document.getElementById('cart-count');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const checkoutModal = document.getElementById('checkout-modal');
+
+        function toggleCart() {
+            cartDrawer.classList.toggle('open');
+            cartOverlay.classList.toggle('hidden');
+        }
+
+        function addToCart(name, price, image) {
+            const item = { id: Date.now(), name, price, image };
+            cart.push(item);
+            updateCart();
+            
+            // Simple animation to let the user know it's added
+            const btn = document.querySelector('.btn-primary');
+            if(btn) {
+                btn.innerText = "Ajouté !";
+                setTimeout(() => btn.innerText = "Découvrir la gamme", 1000);
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function updateCart() {
+            cartCount.innerText = cart.length;
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-slate-400 text-center py-10">Votre panier est vide</p>';
+            } else {
+                cart.forEach(item => {
+                    total += item.price;
+                    cartItems.innerHTML += `
+                        <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <img src="${item.image}" class="w-16 h-16 rounded-xl object-cover">
+                            <div class="flex-grow">
+                                <p class="font-bold text-sm">${item.name}</p>
+                                <p class="text-blue-600 text-xs font-bold">${item.price.toFixed(2)}€</p>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-red-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 10V5a2 2 0 012-2h5a2 2 0 012 2v5" />
+                                </svg>
+                            </button>
+                        </div>
+                    `;
+                });
+            }
+            cartTotal.innerText = total.toFixed(2) + '€';
+        }
+
+        function showCheckout() {
+            if (cart.length === 0) return alert("Votre panier est vide !");
+            checkoutModal.classList.remove('hidden');
+        }
+
+        function closeCheckout() {
+            checkoutModal.classList.add('hidden');
+        }
+
+        document.getElementById('payment-form').onsubmit = function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = "Traitement...";
+            btn.disabled = true;
+            
+            // SIMULATION de paiement
+            setTimeout(() => {
+                document.getElementById('payment-form').classList.add('hidden');
+                document.getElementById('payment-success').classList.remove('hidden');
+                cart = [];
+                updateCart();
+            }, 2000);
+        };
+    };
+    </script>
+</body>
+</html>
